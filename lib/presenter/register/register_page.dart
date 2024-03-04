@@ -19,15 +19,20 @@ class _RegisterPageState extends State<RegisterPage> {
       body: SafeArea(
         child: Stack(
           children: [
-            Container(
-              height: 60,
-              width: MediaQuery.sizeOf(context).width/2,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(20)
-              ),
-              child: const Text(
-                "Logout" , style: TextStyle(color: Colors.white),
+            InkWell(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Container(
+                height: 60,
+                width: MediaQuery.sizeOf(context).width/2,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(20)
+                ),
+                child: const Text(
+                  "Logout" , style: TextStyle(color: Colors.white),
+                ),
               ),
             )
           ],
