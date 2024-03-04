@@ -30,6 +30,13 @@ class _SMSSuccessPageState extends State<SMSSuccessPage> {
       value: bloc,
       child: BlocConsumer<SendCodeBloc, SendCodeInitial>(
   listener: (context, state) {
+    if(state.response!.success){
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => LoginPage(
+                phoneNumber: "998${controler.text}",)));
+    }
   },
   builder: (context, state) {
     return Scaffold(
@@ -135,13 +142,8 @@ class _SMSSuccessPageState extends State<SMSSuccessPage> {
                         if (controler.text.length == 9) {
 
                           bloc.add(SendCodeEvent("998${controler.text}"));
-                          if(state.response!.success){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => LoginPage(
-                                      phoneNumber: "998${controler.text}",)));
-                          }// Navigator.pushNamed(context, "login");
+
+                          // Navigator.pushNamed(context, "login");
                         }
                       },
                       child: Container(
