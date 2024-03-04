@@ -3,9 +3,11 @@ import 'package:marketplace_auth/di/app_di.dart';
 import 'package:marketplace_auth/presenter/login/login_page.dart';
 import 'package:marketplace_auth/presenter/verification/sms_code_succses.dart';
 
+import 'data/remote/network/network.dart';
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  setUp();
+  await setUp();
   runApp(const MyApp());
 }
 
@@ -16,12 +18,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: Network.alice.getNavigatorKey(),
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  LoginPage(),
       initialRoute: '/',
       routes: {
         '/':(context) => SMSSuccessPage(),

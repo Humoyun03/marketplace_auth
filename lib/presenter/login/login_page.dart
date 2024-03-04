@@ -55,9 +55,14 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Color(0xff636C79)),
-                      child: const Center(
-                          child: Icon(Icons.keyboard_arrow_left_outlined,
-                              color: Colors.white)),
+                      child: InkWell(
+                        onTap: (){
+                          Navigator.pop(context);
+                        },
+                        child: const Center(
+                            child: Icon(Icons.keyboard_arrow_left_outlined,
+                                color: Colors.white)),
+                      ),
                     ),
                     SizedBox(
                       height: 20,
@@ -113,8 +118,8 @@ class _LoginPageState extends State<LoginPage> {
                           child: Padding(
                             padding: EdgeInsets.only(left: 20, top: 16),
                             child: Text(
-                              widget.phoneNumber ?? "998907322702",
-                              style: TextStyle(
+                              widget.phoneNumber ?? "9989073227",
+                              style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
                                   color: Colors.black),

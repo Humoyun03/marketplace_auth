@@ -1,12 +1,15 @@
 import 'dart:convert';
 
 
+import 'package:alice/alice.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Network {
 
+  static Alice alice =
+  Alice(showNotification: true, showInspectorOnShake: true);
 
   static Dio getDio() {
 
@@ -20,6 +23,7 @@ class Network {
     // final sharedPreference = getIt<SharedPreferences>();
     // final accessToken = sharedPreference.getString("TOKEN") ?? "";
 
+    dio.interceptors.add(alice.getDioInterceptor());
 
     // dio.interceptors
     //     .add(InterceptorsWrapper(onError: (DioException error, handler) async {

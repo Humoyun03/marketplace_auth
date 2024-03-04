@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marketplace_auth/presenter/login/login_page.dart';
 import 'package:marketplace_auth/presenter/verification/bloc/send_code_bloc.dart';
 
 class SMSSuccessPage extends StatefulWidget {
@@ -132,14 +133,19 @@ class _SMSSuccessPageState extends State<SMSSuccessPage> {
                     InkWell(
                       onTap: () {
                         if (controler.text.length == 9) {
-                          bloc.add(SendCodeEvent(controler.text));
-                          Navigator.pushNamed(context, "smsveri");
+                          bloc.add(SendCodeEvent("998${controler.text}"));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage(
+                                      phoneNumber: "998${controler.text}",)));
+                          // Navigator.pushNamed(context, "login");
                         }
                       },
                       child: Container(
                         margin: EdgeInsets.only(left: 20, right: 20),
                         height: 50,
-                        width: double.infinity,
+                        width: MediaQuery.sizeOf(context).width/1.1,
                         decoration: BoxDecoration(
                             color: controler.text.length == 9
                                 ? Colors.blue
