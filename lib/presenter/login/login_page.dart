@@ -218,6 +218,10 @@ class _LoginPageState extends State<LoginPage> {
                       onTap: () {
                         if (controller.text.length == 4) {
                           bloc.add(LoginUser(LoginRequest(controller.text, widget.phoneNumber.toString(), "")));
+                          if(state.response!.success){
+                            Navigator.pushNamed(
+                                context,'register');
+                          }
 
                         }
                       },
@@ -230,7 +234,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ? Colors.blue
                                 : Colors.black12,
                             borderRadius: BorderRadiusDirectional.circular(30)),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -250,7 +254,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Row(
                         children: [
                           Text(
-                            "Mobil ilovadan ro‘yxatdan o‘tish orqali, siz  ",
+                            "Mobil kiloradian ro‘yxatdan o‘tish orqali, siz  ",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 10,

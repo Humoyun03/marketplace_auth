@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketplace_auth/di/app_di.dart';
 import 'package:marketplace_auth/presenter/login/login_page.dart';
+import 'package:marketplace_auth/presenter/register/register_page.dart';
 import 'package:marketplace_auth/presenter/verification/sms_code_succses.dart';
 
 import 'data/remote/network/network.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       navigatorKey: Network.alice.getNavigatorKey(),
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -26,8 +28,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/':(context) => SMSSuccessPage(),
+        '/':(context) => const SMSSuccessPage(),
         'login':(context) => LoginPage(),
+        'register':(context) => RegisterPage(),
       },
 
     );

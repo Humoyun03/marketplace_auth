@@ -1,9 +1,8 @@
 part of 'send_code_bloc.dart';
 
-@immutable
-abstract class SendCodeState {}
 
-class SendCodeInitial extends SendCodeState {
+
+class SendCodeInitial {
 
   SendCodeResponse? response;
   SendCodeInitial({ this.response});

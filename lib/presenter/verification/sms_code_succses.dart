@@ -28,7 +28,7 @@ class _SMSSuccessPageState extends State<SMSSuccessPage> {
     return BlocProvider.value(
       
       value: bloc,
-      child: BlocConsumer<SendCodeBloc, SendCodeState>(
+      child: BlocConsumer<SendCodeBloc, SendCodeInitial>(
   listener: (context, state) {
   },
   builder: (context, state) {
@@ -133,13 +133,15 @@ class _SMSSuccessPageState extends State<SMSSuccessPage> {
                     InkWell(
                       onTap: () {
                         if (controler.text.length == 9) {
+
                           bloc.add(SendCodeEvent("998${controler.text}"));
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginPage(
+                          if(state.response!.success){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage(
                                       phoneNumber: "998${controler.text}",)));
-                          // Navigator.pushNamed(context, "login");
+                          }// Navigator.pushNamed(context, "login");
                         }
                       },
                       child: Container(
